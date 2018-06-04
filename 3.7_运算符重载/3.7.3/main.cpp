@@ -1,23 +1,23 @@
 /*
- * 3.7.3  ²Ù×÷·ûÖØÔØ  Àà¶ÔÏó×ö²ÎÊı
- * Áõ½ğÃ÷  320160939811
+ * 3.7.3  æ“ä½œç¬¦é‡è½½  ç±»å¯¹è±¡åšå‚æ•°
+ * åˆ˜é‡‘æ˜  320160939811
  */
 
 #include <iostream>
 #include <string.h>
 using namespace std;
 
-class student       //Ñ§ÉúÀà
+class student       //å­¦ç”Ÿç±»
 {
 private:
     char name[10];
     int deg1,deg2,deg3;
 public:
-    student(){deg1=deg2=deg3=0;}        //Ä¬ÈÏ²ÎÊı¹¹Ôì
-    student(const char *na, int d1, int d2, int d3);    //´ø²ÎÊıµÄ¹¹Ôì
-    friend student operator+(const student s1,const student s2);    //ÓÑÔªµÄ²Ù×÷·ûÖØÔØº¯Êı
-    friend void avg(student &s,int n);                   //ÓÑÔªÆ½¾ù·Ö¼ÆËãº¯Êı
-    //getºÍset·½·¨
+    student(){deg1=deg2=deg3=0;}        //é»˜è®¤å‚æ•°æ„é€ 
+    student(const char *na, int d1, int d2, int d3);    //å¸¦å‚æ•°çš„æ„é€ 
+    friend student operator+(const student s1,const student s2);    //å‹å…ƒçš„æ“ä½œç¬¦é‡è½½å‡½æ•°
+    friend void avg(student &s,int n);                   //å‹å…ƒå¹³å‡åˆ†è®¡ç®—å‡½æ•°
+    //getå’Œsetæ–¹æ³•
     int get_deg1(){return deg1;}
     int get_deg2(){return deg2;}
     int get_deg3(){return deg3;}
@@ -26,7 +26,7 @@ public:
     void show();
 } ;
 
-//Ñ§ÉúÀàÏà¼ÓµÄ²Ù×÷·ûÖØÔØº¯Êı£¬·µ»ØÖµÎªÒ»¸öÑ§Éú¶ÔÏó
+//å­¦ç”Ÿç±»ç›¸åŠ çš„æ“ä½œç¬¦é‡è½½å‡½æ•°ï¼Œè¿”å›å€¼ä¸ºä¸€ä¸ªå­¦ç”Ÿå¯¹è±¡
 student operator+ (student s1, student s2)
 {
     student a;
@@ -38,56 +38,54 @@ student operator+ (student s1, student s2)
     a.set_name("new_stu");
     return a;
 }
-//Ñ§ÉúÀàº¬²Î¹¹Ôì
+//å­¦ç”Ÿç±»å«å‚æ„é€ 
 student::student(const char *na, int d1, int d2, int d3) {
     strcpy(name,na);
-    deg1=d1;
-    deg2=d2;
-    deg3=d3;
+    set_deg(d1,d2,d3);
 }
-//·ÖÊıµÄset·½·¨
+//åˆ†æ•°çš„setæ–¹æ³•
 void student::set_deg(int a, int b, int c) {
     deg1=a;
     deg2=b;
     deg3=c;
 }
-//Ãû×ÖµÄset·½·¨
+//åå­—çš„setæ–¹æ³•
 void student::set_name(const char *n) {
     strcpy(name,n);
 }
-//Æ½¾ù·ÖµÄset·½·¨
+//å¹³å‡åˆ†çš„setæ–¹æ³•
 void avg(student &s, int n) {
 
-    cout<<"\n¸÷Ñ§¿ÆÆ½¾ù·Ö£º(¹²"<<n<<"ÈË)"<<"\n¸ßÊı£º"<<s.get_deg1()/n
-        <<"\nÓ¢Óï£º"<<s.get_deg2()/n<<"\n¼ÆËã»ú£º"<<s.get_deg3()/n<<endl;
+    cout<<"\nå„å­¦ç§‘å¹³å‡åˆ†ï¼š(å…±"<<n<<"äºº)"<<"\né«˜æ•°ï¼š"<<s.get_deg1()/n
+        <<"\nè‹±è¯­ï¼š"<<s.get_deg2()/n<<"\nè®¡ç®—æœºï¼š"<<s.get_deg3()/n<<endl;
 }
-//Ñ§ÉúĞÅÏ¢Õ¹Ê¾º¯Êı
+//å­¦ç”Ÿä¿¡æ¯å±•ç¤ºå‡½æ•°
 void student::show() {
-    cout<<"Ñ§Éú£º"<<name<<"\n¸ßÊı£º"<<deg1
-        <<"\nÓ¢Óï£º"<<deg2<<"\n¼ÆËã»ú£º"<<deg3<<endl;
+    cout<<"å­¦ç”Ÿï¼š"<<name<<"\né«˜æ•°ï¼š"<<deg1
+        <<"\nè‹±è¯­ï¼š"<<deg2<<"\nè®¡ç®—æœºï¼š"<<deg3<<endl;
 }
-//Ö÷º¯Êı
+//ä¸»å‡½æ•°
 int main()
 {
-    //¶¨ÒåÒ»¸öÑ§Éú¶ÔÏóÊı×é
+    //å®šä¹‰ä¸€ä¸ªå­¦ç”Ÿå¯¹è±¡æ•°ç»„
     student s[5];
-    //ÓÃ´ø²ÎÊıµÄ¹¹Ôì·¨¸³Öµ
-    s[0]=student("Ğ¡¼¦", 90, 92, 89);
-    s[1]=student("°¢Ãô", 87, 79, 85);
-    //ÓÃset·½·¨¸³Öµ
+    //ç”¨å¸¦å‚æ•°çš„æ„é€ æ³•èµ‹å€¼
+    s[0]=student("å°é¸¡", 90, 92, 89);
+    s[1]=student("é˜¿æ•", 87, 79, 85);
+    //ç”¨setæ–¹æ³•èµ‹å€¼
     s[2].set_deg(78,87,95);
-    s[2].set_name("»¨»¨");
+    s[2].set_name("èŠ±èŠ±");
     s[3].set_deg(90,98,100);
-    s[3].set_name("Î÷Î÷");
-    s[4]=student("ï¨Æ¼",87,88,90);
-    //Ñ§ÉúĞÅÏ¢ÏÔÊ¾
+    s[3].set_name("è¥¿è¥¿");
+    s[4]=student("é“·è",87,88,90);
+    //å­¦ç”Ÿä¿¡æ¯æ˜¾ç¤º
     student st;
     for(int i=0;i<5;i++)
     {
         s[i].show();
-        st=st+s[i];     //Ë³±ã°ÑËùÓĞÑ§Éú·ÖÊı¼ÓÔÚÒ»Æğ
+        st=st+s[i];     //é¡ºä¾¿æŠŠæ‰€æœ‰å­¦ç”Ÿåˆ†æ•°åŠ åœ¨ä¸€èµ·
     }
-    //Æ½¾ù·ÖÏÔÊ¾
+    //å¹³å‡åˆ†æ˜¾ç¤º
     avg(st,5);
     return 0;
 }
